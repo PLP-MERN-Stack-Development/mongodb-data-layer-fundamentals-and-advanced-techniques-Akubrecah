@@ -55,6 +55,7 @@ async function runQueries() {
     const updatedBook = await collection.findOne({ title: 'The Alchemist' });
     console.log(`   New price: $${updatedBook.price}`);
     
+    
     // 5. Delete a book by its title
     console.log('\n5. Deleting "Moby Dick":');
     const deleteResult = await collection.deleteOne({ title: 'Moby Dick' });
