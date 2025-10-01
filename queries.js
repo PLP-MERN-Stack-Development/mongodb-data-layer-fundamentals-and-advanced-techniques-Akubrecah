@@ -1,9 +1,9 @@
 // queries.js - MongoDB queries for PLP Bookstore Assignment
-
+require('dotenv').config();   // Load environment variables
 const { MongoClient } = require('mongodb');
 
 // Connection configuration
-const uri = 'mongodb://localhost:27017';
+const uri = process.env.MONGODB_URI;
 const dbName = 'plp_bookstore';
 const collectionName = 'books';
 

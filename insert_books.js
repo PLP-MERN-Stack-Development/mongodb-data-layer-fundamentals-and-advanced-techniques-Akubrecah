@@ -1,12 +1,10 @@
 // insert_books.js - Script to populate MongoDB with sample book data
 
-// Import MongoDB client
+require('dotenv').config();   // Load environment variables
 const { MongoClient } = require('mongodb');
 
-// ✅ FIX: Encode password special characters
-// Your password: Akufamilia.254
-// Encoded: Akufamilia%2E254
-const uri = 'mongodb+srv://akubrecah:Akufamilia%2E254@akubrecah.dnmrhrv.mongodb.net/?retryWrites=true&w=majority&appName=akubrecah';
+// Load connection string from .env
+const uri = process.env.MONGODB_URI;
 
 // Database and collection names
 const dbName = 'plp_bookstore';
@@ -34,7 +32,7 @@ async function insertBooks() {
 
   try {
     await client.connect();
-    console.log('✅ Connected to MongoDB Atlas');
+    console.log('Connected to MongoDB Atlas');
 
     const db = client.db(dbName);
     const collection = db.collection(collectionName);
@@ -56,10 +54,10 @@ async function insertBooks() {
     });
 
   } catch (err) {
-    console.error('❌ Error occurred:', err);
+    console.error('Error occurred:', err);
   } finally {
     await client.close();
-    console.log('🔒 Connection closed');
+    console.log('Connection closed');
   }
 }
 
